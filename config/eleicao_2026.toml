@@ -1,0 +1,23 @@
+# Parâmetros da coleta. Códigos de eleição e pleito NÃO ficam aqui:
+# são descobertos em comum/config/ele-c.json a cada execução (ver tse.descobrir_eleicao).
+
+ano = 2026
+cargo = 1                       # Presidente
+base_url = "https://resultados.tse.jus.br/oficial"
+
+# Regra de consumo do TSE: máx. 100 req/s por IP, bloqueio de 10 min (renovável).
+# 404 em excesso também pode bloquear — por isso nenhuma URL é montada sem vir da config.
+taxa_req_s = 60
+threads = 16
+timeout_s = 30
+
+ufs = [
+  "ac", "al", "am", "ap", "ba", "ce", "df", "es", "go", "ma", "mg", "ms", "mt", "pa",
+  "pb", "pe", "pi", "pr", "rj", "rn", "ro", "rr", "rs", "sc", "se", "sp", "to", "zz",
+]
+
+# Chave pública Ed25519 dos arquivos .jws, embutida no app oficial
+# (https://resultados.tse.jus.br/oficial/app/main.*.js), verificada em 26/10/2026.
+[jws]
+kid = "sNbt9Q_fLS65zE1_ZLNV-XRRwPY"
+x = "kWlpNHjuws1csyQZwzn3Fhzbi3RD435RbpThtSr4hMc"
